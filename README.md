@@ -1,5 +1,5 @@
 # MovieApp with DocumentDB
-This sample application allows users to create, read, update, and delete a list of Movies. Movie items are saved as JSON documents in Azure DocumentDB.
+This sample ASP.NET MVC 5 application allows users to create, read, update, and delete a list of Movies. Movie items are saved as JSON documents in Azure DocumentDB.
 
 To use this code do the following:
 * Create a DocumentDB account in the Azure portal
