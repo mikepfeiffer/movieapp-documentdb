@@ -1,0 +1,47 @@
+﻿@model MovieMVC.Models.Movie
+
+<div class="row">
+    <div class="col-md-12 movie-content">
+        <h1>Are you sure you want to delete this?</h1>
+        <div class="table">
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.MovieName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MovieName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Rating)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Rating)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ReleaseDate)
+                </dt>
+
+                <dd>
+                    @Model.ReleaseDate.ToShortDateString()
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            }
+        </div>
+
+    </div>
+</div>	
