@@ -93,8 +93,8 @@ namespace MovieMVC
 
         public static async Task<Document> RemoveItemAsync(string id, T item)
         {
-            Document document = await client.ReadDocumentAsync(UriFactory.CreateDocumentUri(DatabaseId, CollectionId, id));
-            return await client.DeleteDocumentAsync(document.SelfLink, null);
+            Document document = await client.ReadDocumentAsync(UriFactory.CreateDocumentUri(DatabaseId, CollectionId, id), new RequestOptions { PartitionKey = new PartitionKey(id) });
+            return await client.DeleteDocumentAsync(document.SelfLink, new RequestOptions { PartitionKey = new PartitionKey(id) });
         }
 
         public static async Task<T> GetItemAsync(string id)
