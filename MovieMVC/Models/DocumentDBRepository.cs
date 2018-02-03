@@ -54,9 +54,12 @@ namespace MovieMVC
             {
                 if (e.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
+                    var documentCollection = new DocumentCollection { Id = CollectionId };
+                    documentCollection.PartitionKey.Paths.Add("/id");
+
                     await client.CreateDocumentCollectionAsync(
                         UriFactory.CreateDatabaseUri(DatabaseId),
-                        new DocumentCollection { Id = CollectionId },
+                        documentCollection,
                         new RequestOptions { OfferThroughput = 1000 });
                 }
                 else
